@@ -1,0 +1,20 @@
+{
+  "name": "job-task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "build": "rimraf ./build && npx tsc",
+    "start": "npm run build && node build/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "rimraf": "^5.0.0",
+    "typescript": "^5.0.4"
+  }
+}
