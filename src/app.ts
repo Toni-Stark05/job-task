@@ -1,13 +1,9 @@
-import Api from './core/app.api.js'
-import { db } from './core/db.js';
+import appService from "./core/app.service.js"
+import db, { TonyStak } from './core/db.js'
 
-const test = async () => {
-    try {
-        await db.authenticate();
-        console.log('Connection has been established successfully.');
-      } catch (error) {
-        console.error('Unable to connect to the database:', error);
-      }
+const start = async () => {
+    await TonyStak.sync({ force: true })
+    await appService.task()
 }
 
-test()
+start()

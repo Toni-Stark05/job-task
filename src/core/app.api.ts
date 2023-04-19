@@ -16,12 +16,10 @@ class Api {
 
     async request<T>(args: AxiosRequestConfig) {
         if (!this.api) throw new Error('API is not defined')
-        console.log(args)
         return await this.api.request<T>(args)
     }
 
     async get<T>(url: string, args: Omit<AxiosRequestConfig, 'method'> = {}) {
-        console.log(url)
         return await this.request<T>({ url, method: 'GET', ...args })
     }
 }

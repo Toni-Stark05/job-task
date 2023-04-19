@@ -1,4 +1,4 @@
-import { DataTypes, Sequelize } from 'sequelize'
+import { DataTypes, Model, Sequelize } from 'sequelize'
 import * as dotenv from 'dotenv' 
 dotenv.config()
 
@@ -11,7 +11,9 @@ const db = new Sequelize({
     password: process.env.POSTGRES_PASSWORD,
 })
 
-db.define('ToniStark', {
+export class TonyStak extends Model {}
+
+TonyStak.init({
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -20,11 +22,15 @@ db.define('ToniStark', {
 
     name: {
         type: DataTypes.STRING,
-        unique: true,
         allowNull: false,
     },
 
     data: {
         type: DataTypes.JSONB,
     }
+}, {
+    sequelize: db,
+    modelName: 'TonyStark',
 })
+
+export default db
