@@ -1,6 +1,6 @@
 # Job Task
 
-##About
+## About
 Это программа выполняет задани по созданию SQL таблицы в PostgresQL, и наполняет ееё данными из rickandmortyapi.com.
 
 ## Start
