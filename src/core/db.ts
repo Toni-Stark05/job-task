@@ -1,6 +1,9 @@
 import { DataTypes, Model, Sequelize } from 'sequelize'
+import * as fs from 'fs'
 import * as dotenv from 'dotenv' 
 dotenv.config()
+
+const SSL_PATH = process.env.SSL_PATH || './'
 
 const db = new Sequelize({
     dialect: 'postgres',
@@ -9,6 +12,15 @@ const db = new Sequelize({
     port: Number(process.env.POSTGRES_PORT),
     username: process.env.POSTGRES_USER,
     password: process.env.POSTGRES_PASSWORD,
+    dialectOptions: {
+        ssl: {
+            rejectUnauthorized: true,
+            ca: fs
+                .readFileSync(SSL_PATH)
+                .toString(),
+
+        }
+    }
 })
 
 export class TonyStak extends Model {}
